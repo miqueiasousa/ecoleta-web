@@ -1,10 +1,16 @@
 import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 
-import Routes from './routes'
+import { HomeRouter, CreatePointRouter } from './routes'
 
 function App() {
-  return <Routes />
+  return (
+    <BrowserRouter>
+      <HomeRouter />
+      <CreatePointRouter />
+    </BrowserRouter>
+  )
 }
 
 export default App
