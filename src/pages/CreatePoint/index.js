@@ -5,6 +5,8 @@ import { Map, TileLayer, Marker } from 'react-leaflet'
 import api from '../../services/api'
 import ibge from '../../services/ibge'
 
+import Dropzone from '../../components/Dropzone'
+
 import './style.css'
 
 import logo from '../../assets/logo.svg'
@@ -18,6 +20,7 @@ function CreatePoint() {
   const [initialPosition, setInitialPosition] = useState([0, 0])
   const [selectedPosition, setSelectedPosition] = useState([0, 0])
   const [selectedItems, setSelectedItems] = useState([])
+  const [selectedFile, setSelectedFile] = useState()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -59,17 +62,19 @@ function CreatePoint() {
     const city = selectedCity
     const [latitude, longitude] = selectedPosition
     const items = selectedItems
+    const data = new FormData()
 
-    await api.post('points', {
-      name,
-      email,
-      whatsapp,
-      uf,
-      city,
-      latitude,
-      longitude,
-      items
-    })
+    data.append('name', name)
+    data.append('email', email)
+    data.append('whatsapp', whatsapp)
+    data.append('uf', uf)
+    data.append('city', city)
+    data.append('latitude', String(latitude))
+    data.append('longitude', String(longitude))
+    data.append('items', items.join(','))
+    data.append('image', selectedFile)
+
+    await api.post('points', data)
 
     alert('ok')
 
@@ -107,6 +112,7 @@ function CreatePoint() {
       </header>
       <form onSubmit={handleSubmit}>
         <h1>Cadastro de ponto de coleta</h1>
+        <Dropzone onFileUploaded={setSelectedFile} />
         <fieldset>
           <legend>
             <h2>Dados</h2>
