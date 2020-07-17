@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 import { Map, TileLayer, Marker } from 'react-leaflet'
 import api from '../../services/api'
 import ibge from '../../services/ibge'
 
 import Dropzone from '../../components/Dropzone'
+import Container from '../../components/Container'
+import Header from '../../components/Header'
+import Link from '../../components/Link'
 
 import './style.css'
-
-import logo from '../../assets/logo.svg'
 
 function CreatePoint() {
   const [items, setItems] = useState([])
@@ -102,14 +103,10 @@ function CreatePoint() {
   }, [selectedUf])
 
   return (
-    <div id="page-create-point">
-      <header>
-        <img src={logo} alt="Ecoleta" />
-        <Link to="/">
-          <FiArrowLeft />
-          Voltar para home
-        </Link>
-      </header>
+    <Container>
+      <Header>
+        <Link to="/" icon={FiArrowLeft} content="Voltar para home" />
+      </Header>
       <form onSubmit={handleSubmit}>
         <h1>Cadastro de ponto de coleta</h1>
         <Dropzone onFileUploaded={setSelectedFile} />
@@ -214,7 +211,7 @@ function CreatePoint() {
         </fieldset>
         <button type="submit">Cadastrar ponto de coleta</button>
       </form>
-    </div>
+    </Container>
   )
 }
 
