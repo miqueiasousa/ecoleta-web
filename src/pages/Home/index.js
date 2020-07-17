@@ -1,31 +1,41 @@
 import React from 'react'
-import { FiLogIn } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
-
+import { FiLogIn, FiSearch } from 'react-icons/fi'
+import Container from '../../components/Container'
+import Header from '../../components/Header'
+import Link from '../../components/Link'
 import './style.css'
-
-import logo from '../../assets/logo.svg'
 
 function Home() {
   return (
-    <div id="page-home">
-      <div className="content">
-        <header>
-          <img src={logo} alt="Ecoleta" />
-        </header>
-        <main>
-          <h1>Seu marketplace de coleta de resíduos.</h1>
-          <p>
-            Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.
-          </p>
-          <Link to="/create-point">
-            <span>
-              <FiLogIn />
+    <div className="wrapper">
+      <Container>
+        <Header>
+          <Link
+            to="/create-point"
+            icon={FiLogIn}
+            content="Cadastre um ponto de coleta"
+          />
+        </Header>
+        <main className="main">
+          <div className="content">
+            <h1 className="content__head">
+              Seu marketplace de coleta de resíduos.
+            </h1>
+            <p className="content__desc">
+              Ajudamos pessoas a encontrarem pontos de coleta de forma
+              eficiente.
+            </p>
+          </div>
+          <div className="button-search">
+            <span className="button-search__container-icon">
+              <FiSearch className="button-search__icon" />
             </span>
-            <strong>Cadastre um ponto de coleta</strong>
-          </Link>
+            <span className="button-search__content">
+              Pesquisar pontos de coleta
+            </span>
+          </div>
         </main>
-      </div>
+      </Container>
     </div>
   )
 }
