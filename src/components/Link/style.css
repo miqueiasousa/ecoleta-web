@@ -1,0 +1,13 @@
+.link {
+  font-weight: bold;
+  color: var(--title-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.link__icon {
+  margin: 0 16px 0 0;
+  width: 24px;
+  height: 24px;
+}
