@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom'
 import { Map, TileLayer, Marker } from 'react-leaflet'
 import api from '../../services/api'
 import ibge from '../../services/ibge'
-
 import Dropzone from '../../components/Dropzone'
+import './style.css'
 
 export default function Form() {
   const [items, setItems] = useState([])
@@ -97,26 +97,32 @@ export default function Form() {
   }, [selectedUf])
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Cadastro de ponto de coleta</h1>
+    <form className="form" onSubmit={handleSubmit}>
+      <h1 className="form__head">Cadastro de ponto de coleta</h1>
       <Dropzone onFileUploaded={setSelectedFile} />
-      <fieldset>
-        <legend>
-          <h2>Dados</h2>
-        </legend>
-        <div className="field">
-          <label htmlFor="name">Nome da entidade</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            onChange={handleInputChange}
-          />
+      <div className="fieldset">
+        <div className="fieldset__header">
+          <h2 className="fieldset__title">Dados</h2>
         </div>
-        <div className="field-group">
-          <div className="field">
-            <label htmlFor="email">E-mail</label>
+        <div className="container-field">
+          <div className="container-field__item--lg field">
+            <label className="field__label" htmlFor="name">
+              Nome da entidade
+            </label>
             <input
+              className="field__input"
+              type="text"
+              name="name"
+              id="name"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="field">
+            <label className="field__label" htmlFor="email">
+              E-mail
+            </label>
+            <input
+              className="field__input"
               type="email"
               name="email"
               id="email"
@@ -124,8 +130,11 @@ export default function Form() {
             />
           </div>
           <div className="field">
-            <label htmlFor="whatsapp">Whatsapp</label>
+            <label className="field__label" htmlFor="whatsapp">
+              Whatsapp
+            </label>
             <input
+              className="field__input"
               type="text"
               name="whatsapp"
               id="whatsapp"
@@ -133,12 +142,12 @@ export default function Form() {
             />
           </div>
         </div>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <h2>Endereço</h2>
-          <span>Selecione o endereço no mapa</span>
-        </legend>
+      </div>
+      <div className="fieldset">
+        <div className="fieldset__header">
+          <h2 className="fieldset__title">Endereço</h2>
+          <span className="fieldset__detail">Selecione o endereço no mapa</span>
+        </div>
         <Map center={initialPosition} zoom="15" onclick={handleMapClick}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -146,10 +155,13 @@ export default function Form() {
           />
           <Marker position={selectedPosition} />
         </Map>
-        <div className="field-group">
+        <div className="container-field">
           <div className="field">
-            <label htmlFor="uf">Estado (UF)</label>
+            <label className="field__label" htmlFor="uf">
+              Estado (UF)
+            </label>
             <select
+              className="field__input"
               value={selectedUf}
               name="uf"
               id="uf"
@@ -164,8 +176,11 @@ export default function Form() {
             </select>
           </div>
           <div className="field">
-            <label htmlFor="city">Cidade</label>
+            <label className="field__label" htmlFor="city">
+              Cidade
+            </label>
             <select
+              className="field__input"
               value={selectedCity}
               name="city"
               id="city"
@@ -180,12 +195,14 @@ export default function Form() {
             </select>
           </div>
         </div>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <h2>Items de coleta</h2>
-          <span>Selecione um ou mais itens abaixo</span>
-        </legend>
+      </div>
+      <div className="fieldset">
+        <div className="fieldset__header">
+          <h2 className="fieldset__title">Items de coleta</h2>
+          <span className="fieldset__detail">
+            Selecione um ou mais itens abaixo
+          </span>
+        </div>
         <ul className="items-grid">
           {items.map(item => (
             <li
@@ -198,8 +215,10 @@ export default function Form() {
             </li>
           ))}
         </ul>
-      </fieldset>
-      <button type="submit">Cadastrar ponto de coleta</button>
+      </div>
+      <button className="form__btn" type="submit">
+        Cadastrar ponto de coleta
+      </button>
     </form>
   )
 }
