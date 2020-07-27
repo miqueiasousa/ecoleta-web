@@ -201,18 +201,22 @@ export default function Form() {
             Selecione um ou mais itens abaixo
           </span>
         </div>
-        <ul className="items-grid">
+        <div className="container-items">
           {items.map(item => (
-            <li
+            <div
               key={item.id}
               onClick={() => handleSelectItem(item.id)}
-              className={selectedItems.includes(item.id) ? 'selected' : ''}
+              className={
+                selectedItems.includes(item.id)
+                  ? 'container-items__item container-items__item--selected'
+                  : 'container-items__item'
+              }
             >
               <img src={item.image_url} alt={item.title} />
-              <span>{item.title}</span>
-            </li>
+              <span className="container-items__item-title">{item.title}</span>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
       <button className="form__btn" type="submit">
         Cadastrar ponto de coleta
