@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Map, TileLayer, Marker } from 'react-leaflet'
 import api from '../../services/api'
 import ibge from '../../services/ibge'
 import Dropzone from '../../components/Dropzone'
+import Map from '../Map'
 import './style.css'
 
 export default function Form() {
@@ -148,13 +148,11 @@ export default function Form() {
           <h2 className="fieldset__title">Endereço</h2>
           <span className="fieldset__detail">Selecione o endereço no mapa</span>
         </div>
-        <Map center={initialPosition} zoom="15" onclick={handleMapClick}>
-          <TileLayer
-            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={selectedPosition} />
-        </Map>
+        <Map
+          center={initialPosition}
+          onClick={handleMapClick}
+          marker={selectedPosition}
+        />
         <div className="container-field">
           <div className="field">
             <label className="field__label" htmlFor="uf">

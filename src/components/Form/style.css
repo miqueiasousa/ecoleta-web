@@ -77,13 +77,6 @@
   appearance: none;
 }
 
-.leaflet-container {
-  width: 100%;
-  height: 350px;
-  border-radius: 8px;
-  margin-bottom: 24px;
-}
-
 .items-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
