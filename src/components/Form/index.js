@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 import api from '../../services/api'
 import ibge from '../../services/ibge'
 import Dropzone from '../../components/Dropzone'
-import Map from '../Map'
 import './style.css'
 
 export default function Form() {
@@ -12,8 +11,6 @@ export default function Form() {
   const [selectedUf, setSelectedUf] = useState('')
   const [cities, setCities] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
-  const [initialPosition, setInitialPosition] = useState([0, 0])
-  const [selectedPosition, setSelectedPosition] = useState([0, 0])
   const [selectedItems, setSelectedItems] = useState([])
   const [selectedFile, setSelectedFile] = useState()
   const [formData, setFormData] = useState({
@@ -29,10 +26,6 @@ export default function Form() {
 
   const handleSelectedCity = ({ target }) => {
     setSelectedCity(target.value)
-  }
-
-  const handleMapClick = ({ latlng }) => {
-    setSelectedPosition([latlng.lat, latlng.lng])
   }
 
   const handleInputChange = ({ target }) => {
@@ -60,7 +53,6 @@ export default function Form() {
     const { name, email, whatsapp } = formData
     const uf = selectedUf
     const city = selectedCity
-    const [latitude, longitude] = selectedPosition
     const items = selectedItems
     const data = new FormData()
 
@@ -69,8 +61,6 @@ export default function Form() {
     data.append('whatsapp', whatsapp)
     data.append('uf', uf)
     data.append('city', city)
-    data.append('latitude', String(latitude))
-    data.append('longitude', String(longitude))
     data.append('items', items.join(','))
     data.append('image', selectedFile)
 
@@ -80,12 +70,6 @@ export default function Form() {
 
     history.push('/')
   }
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(({ coords }) =>
-      setInitialPosition([coords.latitude, coords.longitude])
-    )
-  }, [])
 
   useEffect(() => {
     api.get('items').then(({ data }) => setItems(data))
@@ -153,11 +137,6 @@ export default function Form() {
           <h2 className="fieldset__title">Endereço</h2>
           <span className="fieldset__detail">Selecione o endereço no mapa</span>
         </div>
-        <Map
-          center={initialPosition}
-          onClick={handleMapClick}
-          marker={selectedPosition}
-        />
         <div className="container-field">
           <div className="field">
             <label className="field__label" htmlFor="uf">
