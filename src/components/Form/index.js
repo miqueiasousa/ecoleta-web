@@ -39,13 +39,18 @@ export default function Form() {
     setFormData({ ...formData, [target.name]: target.value })
   }
 
-  const handleSelectItem = id => {
-    const alreadySelected = selectedItems.findIndex(item => item === id)
+  const handleSelectItem = e => {
+    const item = Number(e.currentTarget.id)
+    const alreadySelected = selectedItems.findIndex(i => i === item)
 
     if (alreadySelected >= 0) {
-      setSelectedItems(selectedItems.filter(item => item !== id))
+      setSelectedItems(selectedItems.filter(i => i !== item))
+
+      e.currentTarget.classList.remove('container-items__item--selected')
     } else {
-      setSelectedItems([...selectedItems, id])
+      setSelectedItems([...selectedItems, item])
+
+      e.currentTarget.classList.add('container-items__item--selected')
     }
   }
 
@@ -205,12 +210,9 @@ export default function Form() {
           {items.map(item => (
             <div
               key={item.id}
-              onClick={() => handleSelectItem(item.id)}
-              className={
-                selectedItems.includes(item.id)
-                  ? 'container-items__item container-items__item--selected'
-                  : 'container-items__item'
-              }
+              id={item.id}
+              className="container-items__item"
+              onClick={handleSelectItem}
             >
               <img src={item.image_url} alt={item.title} />
               <span className="container-items__item-title">{item.title}</span>
