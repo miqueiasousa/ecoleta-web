@@ -165,7 +165,6 @@ export default function Form() {
             </label>
             <select
               className="field__input"
-              value={selectedUf}
               name="uf"
               id="uf"
               onChange={handleSelectedUf}
@@ -184,7 +183,6 @@ export default function Form() {
             </label>
             <select
               className="field__input"
-              value={selectedCity}
               name="city"
               id="city"
               onChange={handleSelectedCity}
