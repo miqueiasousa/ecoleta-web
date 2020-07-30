@@ -1,0 +1,26 @@
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: hsla(264, 33%, 6%, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.visible {
+  animation: 0.5s toBottom ease-in-out forwards;
+}
+
+@keyframes toBottom {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
