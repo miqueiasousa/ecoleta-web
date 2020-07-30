@@ -6,18 +6,18 @@ import Dropzone from '../../components/Dropzone'
 import './style.css'
 
 export default function Form() {
-  const [items, setItems] = useState([])
+  const [formData, setFormData] = useState({
+    name: '',
+    street: '',
+    number: ''
+  })
   const [ufs, setUfs] = useState([])
   const [selectedUf, setSelectedUf] = useState('')
   const [cities, setCities] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
+  const [items, setItems] = useState([])
   const [selectedItems, setSelectedItems] = useState([])
   const [selectedFile, setSelectedFile] = useState()
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    whatsapp: ''
-  })
   const history = useHistory()
 
   const handleSelectedUf = ({ target }) => {
@@ -32,43 +32,43 @@ export default function Form() {
     setFormData({ ...formData, [target.name]: target.value })
   }
 
-  const handleSelectItem = e => {
-    const item = Number(e.currentTarget.id)
-    const alreadySelected = selectedItems.findIndex(i => i === item)
+  const handleSelectItem = ({ currentTarget }) => {
+    const item = Number(currentTarget.id)
+    const alreadySelected = selectedItems.find(i => i === item)
 
-    if (alreadySelected >= 0) {
+    if (alreadySelected) {
       setSelectedItems(selectedItems.filter(i => i !== item))
 
-      e.currentTarget.classList.remove('container-items__item--selected')
+      currentTarget.classList.remove('container-items__item--selected')
     } else {
       setSelectedItems([...selectedItems, item])
 
-      e.currentTarget.classList.add('container-items__item--selected')
+      currentTarget.classList.add('container-items__item--selected')
     }
+  }
+
+  const activeOverlay = () => {
+    document.querySelector('.overlay').classList.add('visible')
   }
 
   const handleSubmit = async event => {
     event.preventDefault()
 
-    const { name, email, whatsapp } = formData
-    const uf = selectedUf
-    const city = selectedCity
-    const items = selectedItems
     const data = new FormData()
 
-    data.append('name', name)
-    data.append('email', email)
-    data.append('whatsapp', whatsapp)
-    data.append('uf', uf)
-    data.append('city', city)
-    data.append('items', items.join(','))
+    data.append('name', formData.name)
+    data.append('street', formData.street)
+    data.append('number', formData.number)
+    data.append('uf', selectedUf)
+    data.append('city', selectedCity)
+    data.append('items', selectedItems.join(','))
     data.append('image', selectedFile)
 
     await api.post('points', data)
 
-    alert('ok')
+    activeOverlay()
 
-    history.push('/')
+    setTimeout(() => history.push('/'), 2000)
   }
 
   useEffect(() => {
