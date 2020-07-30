@@ -91,10 +91,10 @@ export default function Form() {
       <Dropzone onFileUploaded={setSelectedFile} />
       <div className="fieldset">
         <div className="fieldset__header">
-          <h2 className="fieldset__title">Dados</h2>
+          <h2 className="fieldset__title">Dados da entidade</h2>
         </div>
         <div className="container-field">
-          <div className="container-field__item--lg field">
+          <div className="container-field__item-lg field">
             <label className="field__label" htmlFor="name">
               Nome da entidade
             </label>
@@ -106,39 +106,31 @@ export default function Form() {
               onChange={handleInputChange}
             />
           </div>
-          <div className="field">
-            <label className="field__label" htmlFor="email">
-              E-mail
-            </label>
-            <input
-              className="field__input"
-              type="email"
-              name="email"
-              id="email"
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="field">
-            <label className="field__label" htmlFor="whatsapp">
-              Whatsapp
+          <div className="container-field__item-md field">
+            <label className="field__label" htmlFor="street">
+              Endereço
             </label>
             <input
               className="field__input"
               type="text"
-              name="whatsapp"
-              id="whatsapp"
+              name="street"
+              id="street"
               onChange={handleInputChange}
             />
           </div>
-        </div>
-      </div>
-      <div className="fieldset">
-        <div className="fieldset__header">
-          <h2 className="fieldset__title">Endereço</h2>
-          <span className="fieldset__detail">Selecione o endereço no mapa</span>
-        </div>
-        <div className="container-field">
-          <div className="field">
+          <div className="container-field__item-sm field">
+            <label className="field__label" htmlFor="number">
+              Número
+            </label>
+            <input
+              className="field__input"
+              type="number"
+              name="number"
+              id="number"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="container-field__item-sm field">
             <label className="field__label" htmlFor="uf">
               Estado (UF)
             </label>
@@ -156,7 +148,7 @@ export default function Form() {
               ))}
             </select>
           </div>
-          <div className="field">
+          <div className="container-field__item-md field">
             <label className="field__label" htmlFor="city">
               Cidade
             </label>
