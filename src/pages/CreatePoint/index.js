@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FiArrowLeft, FiCheckCircle } from 'react-icons/fi'
 
 import Container from '../../components/Container'
@@ -10,6 +10,8 @@ import Overlay from '../../components/Overlay'
 import './style.css'
 
 function CreatePoint() {
+  const [show, setShow] = useState(false)
+
   return (
     <>
       <Container>
@@ -17,10 +19,10 @@ function CreatePoint() {
           <Link to="/" icon={FiArrowLeft} content="Voltar para home" />
         </Header>
         <div className="container-form">
-          <Form />
+          <Form showOverlay={setShow} />
         </div>
       </Container>
-      <Overlay>
+      <Overlay show={show}>
         <div className="box">
           <FiCheckCircle className="box__icon" />
           <span className="box__text">Cadastro concluído!</span>
