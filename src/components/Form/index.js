@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import api from '../../services/api'
 import ibge from '../../services/ibge'
 import Dropzone from '../../components/Dropzone'
 import './style.css'
 
-export default function Form() {
+export default function Form(props) {
   const [formData, setFormData] = useState({
     name: '',
     street: '',
@@ -47,10 +48,6 @@ export default function Form() {
     }
   }
 
-  const activeOverlay = () => {
-    document.querySelector('.overlay').classList.add('visible')
-  }
-
   const handleSubmit = async event => {
     event.preventDefault()
 
@@ -66,7 +63,7 @@ export default function Form() {
 
     await api.post('points', data)
 
-    activeOverlay()
+    props.showOverlay(true)
 
     setTimeout(() => history.push('/'), 2000)
   }
@@ -194,4 +191,8 @@ export default function Form() {
       </button>
     </form>
   )
+}
+
+Form.propTypes = {
+  showOverlay: PropTypes.func
 }
