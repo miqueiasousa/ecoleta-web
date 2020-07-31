@@ -3,9 +3,14 @@ import PropTypes from 'prop-types'
 import './style.css'
 
 export default function Overlay(props) {
-  return <div className="overlay">{props.children}</div>
+  return props.show ? (
+    <div className="overlay visible">{props.children}</div>
+  ) : (
+    <div className="overlay">{props.children}</div>
+  )
 }
 
 Overlay.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
+  show: PropTypes.bool
 }
