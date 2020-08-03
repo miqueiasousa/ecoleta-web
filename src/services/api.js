@@ -15,3 +15,9 @@ export const postPoint = async data => {
 
   return res.headers.location
 }
+
+export const getPoints = async (uf, city) => {
+  const res = await api.get(`points?uf=${uf}&city=${city}`)
+
+  return res.data
+}
