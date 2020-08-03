@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import api from '../../services/api'
-import ibge from '../../services/ibge'
+import { getItems, postPoint } from '../../services/api'
+import { getUfs, getCities } from '../../services/ibge'
 import Dropzone from '../../components/Dropzone'
 import './style.css'
 
@@ -48,7 +48,7 @@ export default function Form(props) {
     }
   }
 
-  const handleSubmit = async event => {
+  const handleSubmit = event => {
     event.preventDefault()
 
     const data = new FormData()
@@ -61,25 +61,31 @@ export default function Form(props) {
     data.append('items', selectedItems.join(','))
     data.append('image', selectedFile)
 
-    await api.post('points', data)
+    postPoint(data).then(() => {
+      props.showOverlay(true)
 
-    props.showOverlay(true)
-
-    setTimeout(() => history.push('/'), 2000)
+      setTimeout(() => history.push('/'), 2000)
+    })
   }
 
   useEffect(() => {
-    api.get('items').then(({ data }) => setItems(data))
+    getItems().then(items => setItems(items))
   }, [])
 
   useEffect(() => {
-    ibge.get('estados').then(({ data }) => setUfs(data.map(uf => uf.sigla)))
+    getUfs().then(ufs => {
+      const serializedUfs = ufs.map(uf => uf.sigla)
+
+      setUfs(serializedUfs)
+    })
   }, [])
 
   useEffect(() => {
-    ibge
-      .get(`estados/${selectedUf}/municipios`)
-      .then(({ data }) => setCities(data.map(city => city.nome)))
+    getCities(selectedUf).then(cities => {
+      const serializedCities = cities.map(city => city.nome)
+
+      setCities(serializedCities)
+    })
   }, [selectedUf])
 
   return (
