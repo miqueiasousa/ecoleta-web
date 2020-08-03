@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import './style.css'
 
 export default function Overlay(props) {
-  return props.show ? (
-    <div className="overlay visible">{props.children}</div>
-  ) : (
-    <div className="overlay">{props.children}</div>
+  return (
+    <div className={`overlay ${props.show ? 'visible' : ''}`}>
+      {props.children}
+    </div>
   )
 }
 
