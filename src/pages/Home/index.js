@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { FiLogIn, FiSearch } from 'react-icons/fi'
+import { useHistory } from 'react-router-dom'
+import { getPoints } from '../../services/api'
 import { getUfs, getCities } from '../../services/ibge'
 import Container from '../../components/Container'
 import Header from '../../components/Header'
 import Link from '../../components/Link'
 import Overlay from '../../components/Overlay'
+import { PointsContext } from '../../context/PointsContext'
 
 import './style.css'
 
@@ -13,8 +16,9 @@ function Home() {
   const [ufs, setUfs] = useState([])
   const [selectedUf, setSelectedUf] = useState('')
   const [cities, setCities] = useState([])
-  // eslint-disable-next-line no-unused-vars
   const [selectedCity, setSelectedCity] = useState('')
+  const [, setPoints] = useContext(PointsContext)
+  const history = useHistory()
 
   const handleSelectedUf = ({ target }) => {
     setSelectedUf(target.value)
@@ -22,6 +26,15 @@ function Home() {
 
   const handleSelectedCity = ({ target }) => {
     setSelectedCity(target.value)
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    getPoints(selectedUf, selectedCity).then(points => {
+      setPoints(points)
+      history.push('/points')
+    })
   }
 
   useEffect(() => {
@@ -71,7 +84,7 @@ function Home() {
         </main>
       </Container>
       <Overlay show={show}>
-        <form className="form-search">
+        <form className="form-search" onSubmit={handleSubmit}>
           <h1 className="form-search__head">Pontos de coleta</h1>
           <div className="fieldset-search">
             <select
