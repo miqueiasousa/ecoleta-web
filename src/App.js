@@ -3,13 +3,16 @@ import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 
 import { HomeRouter, CreatePointRouter } from './routes'
+import PointsProvider from './context/PointsContext'
 
 function App() {
   return (
-    <BrowserRouter>
-      <HomeRouter />
-      <CreatePointRouter />
-    </BrowserRouter>
+    <PointsProvider>
+      <BrowserRouter>
+        <HomeRouter />
+        <CreatePointRouter />
+      </BrowserRouter>
+    </PointsProvider>
   )
 }
 
