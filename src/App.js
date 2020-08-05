@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 
-import { HomeRouter, CreatePointRouter } from './routes'
+import { HomeRouter, CreatePointRouter, ListPointsRouter } from './routes'
 import PointsProvider from './context/PointsContext'
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
       <BrowserRouter>
         <HomeRouter />
         <CreatePointRouter />
+        <ListPointsRouter />
       </BrowserRouter>
     </PointsProvider>
   )
