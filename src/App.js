@@ -1,18 +1,13 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import './App.css'
 
-import { HomeRouter, CreatePointRouter, ListPointsRouter } from './routes'
 import PointsProvider from './context/PointsContext'
+import Routes from './routes'
+import './App.css'
 
 function App() {
   return (
     <PointsProvider>
-      <BrowserRouter>
-        <HomeRouter />
-        <CreatePointRouter />
-        <ListPointsRouter />
-      </BrowserRouter>
+      <Routes />
     </PointsProvider>
   )
 }
