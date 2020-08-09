@@ -1,17 +1,20 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { element } from 'prop-types'
+
 import logo from '../../assets/logo.svg'
 import './style.css'
 
-export default function Header(props) {
+function Header({ children }) {
   return (
     <header className="header">
       <img src={logo} alt="Ecoleta" />
-      {props.children}
+      {children}
     </header>
   )
 }
 
 Header.propTypes = {
-  children: PropTypes.element
+  children: element
 }
+
+export default Header

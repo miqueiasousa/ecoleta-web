@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { FiLogIn, FiSearch } from 'react-icons/fi'
+
 import Container from '../../components/Container'
 import Header from '../../components/Header'
 import Link from '../../components/Link'
 import OverlaySearch from '../../components/OverlaySearch'
-
 import './style.css'
 
 function Home() {
@@ -16,7 +16,7 @@ function Home() {
         <Header>
           <Link
             to="/create-point"
-            icon={FiLogIn}
+            Icon={FiLogIn}
             content="Cadastre um ponto de coleta"
           />
         </Header>

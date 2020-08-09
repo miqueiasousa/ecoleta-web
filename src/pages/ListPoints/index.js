@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
+
 import { PointsContext } from '../../context/PointsContext'
 import Container from '../../components/Container'
 import Header from '../../components/Header'
@@ -12,7 +13,7 @@ function ListPoints() {
   return (
     <Container>
       <Header>
-        <Link to="/" icon={FiArrowLeft} content="Voltar para home" />
+        <Link to="/" Icon={FiArrowLeft} content="Voltar para home" />
       </Header>
       <div>
         <span className="counter">

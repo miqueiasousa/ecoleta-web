@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react'
-import PropTypes from 'prop-types'
+import { element } from 'prop-types'
 
-export const PointsContext = createContext()
+const PointsContext = createContext()
 
 const PointsProvider = props => {
   const [points, setPoints] = useState([])
@@ -14,7 +14,7 @@ const PointsProvider = props => {
 }
 
 PointsProvider.propTypes = {
-  children: PropTypes.element
+  children: element
 }
 
-export default PointsProvider
+export { PointsContext, PointsProvider as default }

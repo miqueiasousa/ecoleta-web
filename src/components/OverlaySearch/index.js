@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import { bool } from 'prop-types'
+
 import { getPoints } from '../../services/api'
 import { getUfs, getCities } from '../../services/ibge'
+
 import { PointsContext } from '../../context/PointsContext'
 import Overlay from '../Overlay'
 import './style.css'
 
-export default function OverlaySearch(props) {
+function OverlaySearch({ showOverlay }) {
   const [ufs, setUfs] = useState([])
   const [selectedUf, setSelectedUf] = useState('')
   const [cities, setCities] = useState([])
@@ -49,7 +51,7 @@ export default function OverlaySearch(props) {
   }, [selectedUf])
 
   return (
-    <Overlay show={props.showOverlay}>
+    <Overlay show={showOverlay}>
       <form className="form-search" onSubmit={handleSubmit}>
         <h1 className="form-search__head">Pontos de coleta</h1>
         <div className="fieldset-search">
@@ -89,5 +91,7 @@ export default function OverlaySearch(props) {
 }
 
 OverlaySearch.propTypes = {
-  showOverlay: PropTypes.bool
+  showOverlay: bool
 }
+
+export default OverlaySearch

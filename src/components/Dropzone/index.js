@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { FiUpload } from 'react-icons/fi'
-import PropTypes from 'prop-types'
+import { func } from 'prop-types'
 
 import './style.css'
 
@@ -35,7 +35,7 @@ function Dropzone({ onFileUploaded }) {
 }
 
 Dropzone.propTypes = {
-  onFileUploaded: PropTypes.func
+  onFileUploaded: func
 }
 
 export default Dropzone

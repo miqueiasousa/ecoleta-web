@@ -1,19 +1,22 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import { string, element } from 'prop-types'
+
 import './style.css'
 
-export default function Link(props) {
+function Link({ to, Icon, content }) {
   return (
-    <RouterLink to={props.to} className="link">
-      <props.icon className="link__icon" />
-      {props.content}
+    <RouterLink to={to} className="link">
+      <Icon className="link__icon" />
+      {content}
     </RouterLink>
   )
 }
 
 Link.propTypes = {
-  to: PropTypes.string,
-  icon: PropTypes.element,
-  content: PropTypes.string
+  to: string,
+  Icon: element,
+  content: string
 }
+
+export default Link

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import { func } from 'prop-types'
+
 import { getItems, postPoint } from '../../services/api'
 import { getUfs, getCities } from '../../services/ibge'
+
 import Dropzone from '../../components/Dropzone'
 import './style.css'
 
-export default function Form(props) {
+function Form({ showOverlay }) {
   const [formData, setFormData] = useState({
     name: '',
     street: '',
@@ -62,7 +64,7 @@ export default function Form(props) {
     data.append('image', selectedFile)
 
     postPoint(data).then(() => {
-      props.showOverlay(true)
+      showOverlay(true)
 
       setTimeout(() => history.push('/'), 2000)
     })
@@ -200,5 +202,7 @@ export default function Form(props) {
 }
 
 Form.propTypes = {
-  showOverlay: PropTypes.func
+  showOverlay: func
 }
+
+export default Form

@@ -6,7 +6,6 @@ import Header from '../../components/Header'
 import Link from '../../components/Link'
 import Form from '../../components/Form'
 import Overlay from '../../components/Overlay'
-
 import './style.css'
 
 function CreatePoint() {
@@ -16,7 +15,7 @@ function CreatePoint() {
     <>
       <Container>
         <Header>
-          <Link to="/" icon={FiArrowLeft} content="Voltar para home" />
+          <Link to="/" Icon={FiArrowLeft} content="Voltar para home" />
         </Header>
         <div className="container-form">
           <Form showOverlay={setShow} />
