@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { bool } from 'prop-types'
 
 import { getPoints } from '../../services/api'
 import { getUfs, getCities } from '../../services/ibge'
 
-import { PointsContext } from '../../context/PointsContext'
+import { usePointsContext } from '../../context/PointsContext'
 import Overlay from '../Overlay'
 import './style.css'
 
@@ -14,7 +14,7 @@ function OverlaySearch({ showOverlay }) {
   const [selectedUf, setSelectedUf] = useState('')
   const [cities, setCities] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
-  const [, setPoints] = useContext(PointsContext)
+  const [, setPoints] = usePointsContext()
   const history = useHistory()
 
   const handleSelectedUf = ({ target }) => {

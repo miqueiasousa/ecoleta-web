@@ -1,14 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
 
-import { PointsContext } from '../../context/PointsContext'
+import { usePointsContext } from '../../context/PointsContext'
 import Container from '../../components/Container'
 import Header from '../../components/Header'
 import Link from '../../components/Link'
 import './style.css'
 
 function ListPoints() {
-  const [points] = useContext(PointsContext)
+  const [points] = usePointsContext()
 
   return (
     <Container>

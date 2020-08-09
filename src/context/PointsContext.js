@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useContext } from 'react'
 import { element } from 'prop-types'
 
 const PointsContext = createContext()
@@ -17,4 +17,6 @@ PointsContextProvider.propTypes = {
   children: element
 }
 
-export { PointsContext, PointsContextProvider }
+const usePointsContext = () => useContext(PointsContext)
+
+export { PointsContextProvider, usePointsContext }
