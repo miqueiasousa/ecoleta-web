@@ -3,7 +3,7 @@ import { element } from 'prop-types'
 
 const PointsContext = createContext()
 
-const PointsContextProvider = ({ children }) => {
+export function PointsContextProvider({ children }) {
   const [points, setPoints] = useState([])
 
   return (
@@ -17,6 +17,6 @@ PointsContextProvider.propTypes = {
   children: element
 }
 
-const usePointsContext = () => useContext(PointsContext)
-
-export { PointsContextProvider, usePointsContext }
+export function usePointsContext() {
+  return useContext(PointsContext)
+}
