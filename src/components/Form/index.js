@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { func } from 'prop-types'
 
-import { postPoint } from '../../services/api'
+import { postPoint } from '../../services/PointService'
 import { getItems } from '../../services/ItemService'
 import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'

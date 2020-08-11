@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { bool } from 'prop-types'
 
-import { getPoints } from '../../services/api'
+import { getPoints } from '../../services/PointService'
 import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'
 import { usePointsContext } from '../../context/PointsContext'
@@ -28,7 +28,10 @@ function OverlaySearch({ showOverlay }) {
   const handleSubmit = event => {
     event.preventDefault()
 
-    getPoints(selectedUf, selectedCity).then(points => {
+    getPoints({
+      uf: selectedUf,
+      city: selectedCity
+    }).then(points => {
       setPoints(points)
       history.push('/points')
     })
