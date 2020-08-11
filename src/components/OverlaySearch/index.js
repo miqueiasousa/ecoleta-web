@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { bool } from 'prop-types'
 
 import { getPoints } from '../../services/api'
-import { getCities } from '../../services/ibge'
+import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'
 import { usePointsContext } from '../../context/PointsContext'
 import Overlay from '../Overlay'
