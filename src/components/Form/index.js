@@ -4,7 +4,8 @@ import { func } from 'prop-types'
 
 import { postPoint } from '../../services/api'
 import { getItems } from '../../services/ItemService'
-import { getUfs, getCities } from '../../services/ibge'
+import { getCities } from '../../services/ibge'
+import { getUfs } from '../../services/UfService'
 import Dropzone from '../../components/Dropzone'
 import './style.css'
 
