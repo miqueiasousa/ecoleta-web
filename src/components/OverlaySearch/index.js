@@ -4,7 +4,6 @@ import { bool } from 'prop-types'
 
 import { getPoints } from '../../services/api'
 import { getUfs, getCities } from '../../services/ibge'
-
 import { usePointsContext } from '../../context/PointsContext'
 import Overlay from '../Overlay'
 import './style.css'
