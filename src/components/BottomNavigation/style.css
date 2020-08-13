@@ -1,0 +1,10 @@
+.navigation-btn {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-btn__label {
+  margin-left: 16px;
+  font-weight: bold;
+  color: var(--title-color);
+}
