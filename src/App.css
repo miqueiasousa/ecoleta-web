@@ -67,3 +67,9 @@ button {
 button:hover {
   background: #2fb86e;
 }
+
+svg {
+  color: #4ecb79;
+  width: 24px;
+  height: 24px;
+}
