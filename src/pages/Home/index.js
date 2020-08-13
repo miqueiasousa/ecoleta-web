@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { FiLogIn, FiSearch } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 import Container from '../../components/Container'
 import Header from '../../components/Header'
-import Link from '../../components/Link'
+import BottomNavigation from '../../components/BottomNavigation'
 import OverlaySearch from '../../components/OverlaySearch'
 import './style.css'
 
@@ -14,11 +15,12 @@ function Home() {
     <div className="wrapper">
       <Container>
         <Header>
-          <Link
-            to="/create-point"
-            Icon={FiLogIn}
-            content="Cadastre um ponto de coleta"
-          />
+          <Link to="/create-point">
+            <BottomNavigation
+              icon={<FiLogIn />}
+              label="Cadastre um ponto de coleta"
+            />
+          </Link>
         </Header>
         <main className="main">
           <div className="content">

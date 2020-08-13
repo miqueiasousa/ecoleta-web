@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { FiArrowLeft, FiCheckCircle } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 import Container from '../../components/Container'
 import Header from '../../components/Header'
-import Link from '../../components/Link'
+import BottomNavigation from '../../components/BottomNavigation'
 import Form from '../../components/Form'
 import Overlay from '../../components/Overlay'
 import './style.css'
@@ -15,7 +16,9 @@ function CreatePoint() {
     <>
       <Container>
         <Header>
-          <Link to="/" Icon={FiArrowLeft} content="Voltar para home" />
+          <Link to="/">
+            <BottomNavigation icon={<FiArrowLeft />} label="Voltar para home" />
+          </Link>
         </Header>
         <div className="container-form">
           <Form showOverlay={setShow} />
