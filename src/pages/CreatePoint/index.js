@@ -15,11 +15,16 @@ function CreatePoint() {
   return (
     <>
       <Container>
-        <Header>
-          <Link to="/">
-            <BottomNavigation icon={<FiArrowLeft />} label="Voltar para home" />
-          </Link>
-        </Header>
+        <Header
+          navigation={
+            <Link to="/">
+              <BottomNavigation
+                icon={<FiArrowLeft />}
+                label="Voltar para home"
+              />
+            </Link>
+          }
+        />
         <div className="container-form">
           <Form showOverlay={setShow} />
         </div>

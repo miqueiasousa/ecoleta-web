@@ -13,11 +13,13 @@ function ListPoints() {
 
   return (
     <Container>
-      <Header>
-        <Link to="/">
-          <BottomNavigation icon={<FiArrowLeft />} label="Voltar para home" />
-        </Link>
-      </Header>
+      <Header
+        navigation={
+          <Link to="/">
+            <BottomNavigation icon={<FiArrowLeft />} label="Voltar para home" />
+          </Link>
+        }
+      />
       <div>
         <span className="counter">
           <b>{points.length} pontos</b> encontrados

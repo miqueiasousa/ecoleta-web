@@ -14,14 +14,16 @@ function Home() {
   return (
     <div className="wrapper">
       <Container>
-        <Header>
-          <Link to="/create-point">
-            <BottomNavigation
-              icon={<FiLogIn />}
-              label="Cadastre um ponto de coleta"
-            />
-          </Link>
-        </Header>
+        <Header
+          navigation={
+            <Link to="/create-point">
+              <BottomNavigation
+                icon={<FiLogIn />}
+                label="Cadastre um ponto de coleta"
+              />
+            </Link>
+          }
+        />
         <main className="main">
           <div className="content">
             <h1 className="content__head">
