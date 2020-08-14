@@ -7,9 +7,7 @@
   font-size: 36px;
 }
 
-.form__btn {
-  width: 260px;
-  height: 56px;
+.form__btn-container {
   align-self: flex-end;
   margin-top: 40px;
 }

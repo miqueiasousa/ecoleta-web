@@ -7,6 +7,7 @@ import { getItems } from '../../services/ItemService'
 import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'
 import Dropzone from '../../components/Dropzone'
+import Button from '../../components/Button'
 import './style.css'
 
 function Form({ showOverlay }) {
@@ -195,9 +196,9 @@ function Form({ showOverlay }) {
           ))}
         </div>
       </div>
-      <button className="form__btn" type="submit">
-        Cadastrar ponto de coleta
-      </button>
+      <div className="form__btn-container">
+        <Button label="Cadastrar ponto de coleta" />
+      </div>
     </form>
   )
 }

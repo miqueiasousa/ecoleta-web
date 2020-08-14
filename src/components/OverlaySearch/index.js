@@ -6,6 +6,7 @@ import { getPoints } from '../../services/PointService'
 import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'
 import { usePointsContext } from '../../context/PointsContext'
+import Button from '../Button'
 import Overlay from '../Overlay'
 import './style.css'
 
@@ -85,9 +86,7 @@ function OverlaySearch({ showOverlay }) {
             ))}
           </select>
         </div>
-        <button className="form-search__btn" type="submit">
-          Buscar
-        </button>
+        <Button label="Buscar" />
       </form>
     </Overlay>
   )
