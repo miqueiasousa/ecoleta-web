@@ -6,6 +6,7 @@ import Container from '../../components/Container'
 import Header from '../../components/Header'
 import BottomNavigation from '../../components/BottomNavigation'
 import OverlaySearch from '../../components/OverlaySearch'
+import ActionButton from '../../components/ActionButton'
 import './style.css'
 
 function Home() {
@@ -34,14 +35,11 @@ function Home() {
               eficiente.
             </p>
           </div>
-          <div className="button-search" onClick={() => setShow(true)}>
-            <span className="button-search__container-icon">
-              <FiSearch className="button-search__icon" />
-            </span>
-            <span className="button-search__content">
-              Pesquisar pontos de coleta
-            </span>
-          </div>
+          <ActionButton
+            icon={<FiSearch />}
+            label="Pesquisar pontos de coleta"
+            onClick={() => setShow(true)}
+          />
         </main>
       </Container>
       <OverlaySearch showOverlay={show} />
