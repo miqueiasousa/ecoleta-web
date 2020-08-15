@@ -54,21 +54,6 @@
   grid-column: span 3;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-}
-
-.field__label {
-  margin-bottom: 8px;
-}
-
-.field__input {
-  padding: 16px 24px;
-  color: #6c6c80;
-  background: #f0f0f5;
-}
-
 .container-items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -7,6 +7,7 @@ import { getItems } from '../../services/ItemService'
 import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'
 import Dropzone from '../../components/Dropzone'
+import TextField from '../../components/TextField'
 import Button from '../../components/Button'
 import './style.css'
 
@@ -101,39 +102,25 @@ function Form({ showOverlay }) {
           <h2 className="fieldset__title">Dados da entidade</h2>
         </div>
         <div className="container-field">
-          <div className="container-field__item-lg field">
-            <label className="field__label" htmlFor="name">
-              Nome da entidade
-            </label>
-            <input
-              className="field__input"
-              type="text"
-              name="name"
+          <div className="container-field__item-lg">
+            <TextField
               id="name"
+              label="Nome da entidade"
               onChange={handleInputChange}
             />
           </div>
-          <div className="container-field__item-md field">
-            <label className="field__label" htmlFor="street">
-              Endereço
-            </label>
-            <input
-              className="field__input"
-              type="text"
-              name="street"
+          <div className="container-field__item-md">
+            <TextField
               id="street"
+              label="Endereço"
               onChange={handleInputChange}
             />
           </div>
-          <div className="container-field__item-sm field">
-            <label className="field__label" htmlFor="number">
-              Número
-            </label>
-            <input
-              className="field__input"
-              type="number"
-              name="number"
+          <div className="container-field__item-sm">
+            <TextField
               id="number"
+              label="Número"
+              type="number"
               onChange={handleInputChange}
             />
           </div>
