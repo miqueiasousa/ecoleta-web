@@ -10,6 +10,7 @@ import Dropzone from '../../components/Dropzone'
 import TextField from '../../components/TextField'
 import Select from '../../components/Select'
 import Button from '../../components/Button'
+import Item from '../../components/Item'
 import './style.css'
 
 function Form({ showOverlay }) {
@@ -46,11 +47,11 @@ function Form({ showOverlay }) {
     if (alreadySelected) {
       setSelectedItems(selectedItems.filter(i => i !== item))
 
-      currentTarget.classList.remove('container-items__item--selected')
+      currentTarget.classList.remove('item--selected')
     } else {
       setSelectedItems([...selectedItems, item])
 
-      currentTarget.classList.add('container-items__item--selected')
+      currentTarget.classList.add('item--selected')
     }
   }
 
@@ -156,15 +157,13 @@ function Form({ showOverlay }) {
         </div>
         <div className="container-items">
           {items.map(item => (
-            <div
+            <Item
               key={item.id}
               id={item.id}
-              className="container-items__item"
+              label={item.title}
+              imageSrc={item.image_url}
               onClick={handleSelectItem}
-            >
-              <img src={item.image_url} alt={item.title} />
-              <span className="container-items__item-title">{item.title}</span>
-            </div>
+            />
           ))}
         </div>
       </div>
