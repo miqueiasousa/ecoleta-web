@@ -1,4 +1,7 @@
 .form {
+  padding: 64px;
+  border-radius: 8px;
+  background: #fff;
   display: flex;
   flex-direction: column;
 }
@@ -92,4 +95,11 @@
 .container-items__item-title {
   margin-top: 23px;
   color: var(--title-color);
+}
+
+@media screen and (min-width: 992px) {
+  .form {
+    margin: 0 auto;
+    width: 736px;
+  }
 }

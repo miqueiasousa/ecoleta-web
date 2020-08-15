@@ -25,9 +25,7 @@ function CreatePoint() {
             </Link>
           }
         />
-        <div className="container-form">
-          <Form showOverlay={setShow} />
-        </div>
+        <Form showOverlay={setShow} />
       </Container>
       <Overlay show={show}>
         <div className="box">
