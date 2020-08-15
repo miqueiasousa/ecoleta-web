@@ -1,0 +1,19 @@
+.select {
+  display: flex;
+  flex-direction: column;
+}
+
+.select__label {
+  margin-bottom: 8px;
+}
+
+.select__input {
+  border: 0;
+  border-radius: 8px;
+  padding: 16px 24px;
+  color: #6c6c80;
+  background: #f0f0f5;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

@@ -8,6 +8,7 @@ import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'
 import Dropzone from '../../components/Dropzone'
 import TextField from '../../components/TextField'
+import Select from '../../components/Select'
 import Button from '../../components/Button'
 import './style.css'
 
@@ -124,41 +125,25 @@ function Form({ showOverlay }) {
               onChange={handleInputChange}
             />
           </div>
-          <div className="container-field__item-sm field">
-            <label className="field__label" htmlFor="uf">
-              Estado (UF)
-            </label>
-            <select
-              className="field__input"
-              name="uf"
-              id="uf"
-              onChange={handleSelectedUf}
-            >
+          <div className="container-field__item-sm">
+            <Select id="uf" label="Estado (UF)" onChange={handleSelectedUf}>
               <option value="0">Selecione uma UF</option>
               {ufs.map(uf => (
                 <option key={uf} value={uf}>
                   {uf}
                 </option>
               ))}
-            </select>
+            </Select>
           </div>
-          <div className="container-field__item-md field">
-            <label className="field__label" htmlFor="city">
-              Cidade
-            </label>
-            <select
-              className="field__input"
-              name="city"
-              id="city"
-              onChange={handleSelectedCity}
-            >
+          <div className="container-field__item-md">
+            <Select id="city" label="Cidade" onChange={handleSelectedCity}>
               <option value="0">Selecione uma cidade</option>
               {cities.map(city => (
                 <option key={city} value={city}>
                   {city}
                 </option>
               ))}
-            </select>
+            </Select>
           </div>
         </div>
       </div>
