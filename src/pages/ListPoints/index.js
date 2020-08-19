@@ -6,6 +6,7 @@ import { getPoints } from '../../services/PointService'
 import Container from '../../components/Container'
 import Header from '../../components/Header'
 import BottomNavigation from '../../components/BottomNavigation'
+import Point from '../../components/Point'
 import './style.css'
 
 function ListPoints() {
@@ -34,22 +35,16 @@ function ListPoints() {
         </span>
         <div className="container-points">
           {points.map(point => (
-            <div key={point.id} className="point">
-              <img
-                src={point.image_url}
-                alt={point.name}
-                className="point__image"
-              />
-              <h1 className="point__name">{point.name}</h1>
-              <span className="point__items">
-                {point.items.map(item => item.title).join(', ')}
-              </span>
-              <ul className="point__address">
-                <li>{`${point.uf}, ${point.city}`}</li>
-                <li>{point.street}</li>
-                <li>N° {point.number}</li>
-              </ul>
-            </div>
+            <Point
+              key={point.id}
+              name={point.name}
+              imageURL={point.image_url}
+              uf={point.uf}
+              city={point.city}
+              street={point.street}
+              number={point.number}
+              items={point.items}
+            />
           ))}
         </div>
       </div>
