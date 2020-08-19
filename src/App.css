@@ -37,6 +37,11 @@ h6 {
 input,
 select {
   font-size: 16px;
+  border: 0;
+  border-radius: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 input::-webkit-outer-spin-button,

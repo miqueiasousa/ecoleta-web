@@ -28,9 +28,9 @@ function CreatePoint() {
         <Form showOverlay={setShow} />
       </Container>
       <Overlay show={show}>
-        <div className="box">
-          <FiCheckCircle className="box__icon" />
-          <span className="box__text">Cadastro concluído!</span>
+        <div className="success">
+          <FiCheckCircle className="success__icon" />
+          <span className="success__text">Cadastro concluído!</span>
         </div>
       </Overlay>
     </>

@@ -39,7 +39,7 @@ function ListPoints() {
               <ul className="point__address">
                 <li>{`${point.uf}, ${point.city}`}</li>
                 <li>{point.street}</li>
-                <li>N° ${point.number}</li>
+                <li>N° {point.number}</li>
               </ul>
             </div>
           ))}

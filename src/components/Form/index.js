@@ -7,66 +7,46 @@ import { getItems } from '../../services/ItemService'
 import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'
 import Dropzone from '../../components/Dropzone'
-import TextField from '../../components/TextField'
-import Select from '../../components/Select'
 import Button from '../../components/Button'
 import Item from '../../components/Item'
 import './style.css'
 
 function Form({ showOverlay }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    street: '',
-    number: ''
-  })
+  const [name, setName] = useState('')
+  const [street, setStreet] = useState('')
+  const [number, setNumber] = useState('')
   const [ufs, setUfs] = useState([])
   const [selectedUf, setSelectedUf] = useState('')
   const [cities, setCities] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
   const [items, setItems] = useState([])
   const [selectedItems, setSelectedItems] = useState([])
-  const [selectedFile, setSelectedFile] = useState()
+  const [image, setImage] = useState({})
   const history = useHistory()
 
-  const handleSelectedUf = ({ target }) => {
-    setSelectedUf(target.value)
-  }
+  function handleSelectItem(event) {
+    const selectItem = event.currentTarget.id
+    const isSelected = selectedItems.find(i => i === selectItem)
 
-  const handleSelectedCity = ({ target }) => {
-    setSelectedCity(target.value)
-  }
-
-  const handleInputChange = ({ target }) => {
-    setFormData({ ...formData, [target.name]: target.value })
-  }
-
-  const handleSelectItem = ({ currentTarget }) => {
-    const item = Number(currentTarget.id)
-    const alreadySelected = selectedItems.find(i => i === item)
-
-    if (alreadySelected) {
-      setSelectedItems(selectedItems.filter(i => i !== item))
-
-      currentTarget.classList.remove('item--selected')
+    if (isSelected) {
+      setSelectedItems(selectedItems.filter(i => i !== selectItem))
     } else {
-      setSelectedItems([...selectedItems, item])
-
-      currentTarget.classList.add('item--selected')
+      setSelectedItems([...selectedItems, selectItem])
     }
   }
 
-  const handleSubmit = event => {
+  function handleSubmit(event) {
     event.preventDefault()
 
     const data = new FormData()
 
-    data.append('name', formData.name)
-    data.append('street', formData.street)
-    data.append('number', formData.number)
+    data.append('name', name)
+    data.append('street', street)
+    data.append('number', number)
     data.append('uf', selectedUf)
     data.append('city', selectedCity)
     data.append('items', selectedItems.join(','))
-    data.append('image', selectedFile)
+    data.append('image', image)
 
     postPoint(data).then(() => {
       showOverlay(true)
@@ -98,53 +78,93 @@ function Form({ showOverlay }) {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <h1 className="form__head">Cadastro de ponto de coleta</h1>
-      <Dropzone onFileUploaded={setSelectedFile} />
+      <Dropzone onFileUploaded={setImage} />
       <div className="fieldset">
         <div className="fieldset__header">
           <h2 className="fieldset__title">Dados da entidade</h2>
         </div>
         <div className="container-field">
           <div className="container-field__item-lg">
-            <TextField
-              id="name"
-              label="Nome da entidade"
-              onChange={handleInputChange}
-            />
+            <div className="field">
+              <label className="field__label" htmlFor="name">
+                Nome da entidade
+              </label>
+              <input
+                id="name"
+                className="field__input"
+                type="text"
+                name="name"
+                onChange={({ target }) => setName(target.value)}
+              />
+            </div>
           </div>
           <div className="container-field__item-md">
-            <TextField
-              id="street"
-              label="Endereço"
-              onChange={handleInputChange}
-            />
+            <div className="field">
+              <label className="field__label" htmlFor="street">
+                Endereço
+              </label>
+              <input
+                id="street"
+                className="field__input"
+                type="text"
+                name="street"
+                onChange={({ target }) => setStreet(target.value)}
+              />
+            </div>
           </div>
           <div className="container-field__item-sm">
-            <TextField
-              id="number"
-              label="Número"
-              type="number"
-              onChange={handleInputChange}
-            />
+            <div className="field">
+              <label className="field__label" htmlFor="number">
+                Número
+              </label>
+              <input
+                id="number"
+                className="field__input"
+                type="number"
+                name="number"
+                onChange={({ target }) => setNumber(target.value)}
+              />
+            </div>
           </div>
           <div className="container-field__item-sm">
-            <Select id="uf" label="Estado (UF)" onChange={handleSelectedUf}>
-              <option value="0">Selecione uma UF</option>
-              {ufs.map(uf => (
-                <option key={uf} value={uf}>
-                  {uf}
-                </option>
-              ))}
-            </Select>
+            <div className="field">
+              <label className="field__label" htmlFor="uf">
+                Estado (UF)
+              </label>
+              <select
+                id="uf"
+                className="field__input"
+                name="uf"
+                onChange={({ target }) => setSelectedUf(target.value)}
+              >
+                <option value="0">Selecione uma UF</option>
+                {ufs.map(uf => (
+                  <option key={uf} value={uf}>
+                    {uf}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
           <div className="container-field__item-md">
-            <Select id="city" label="Cidade" onChange={handleSelectedCity}>
-              <option value="0">Selecione uma cidade</option>
-              {cities.map(city => (
-                <option key={city} value={city}>
-                  {city}
-                </option>
-              ))}
-            </Select>
+            <div className="field">
+              <label className="field__label" htmlFor="city">
+                Cidade
+              </label>
+              <select
+                id="city"
+                className="field__input"
+                name="city"
+                onChange={({ target }) => setSelectedCity(target.value)}
+              >
+                <option value="0">Selecione uma cidade</option>
+                {cities.map(city => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
       </div>
