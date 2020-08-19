@@ -1,15 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
-import { usePointsContext } from '../../context/PointsContext'
 import Container from '../../components/Container'
 import Header from '../../components/Header'
 import BottomNavigation from '../../components/BottomNavigation'
 import './style.css'
 
 function ListPoints() {
-  const [points] = usePointsContext()
+  const [points, setPoints] = useState([])
 
   return (
     <Container>

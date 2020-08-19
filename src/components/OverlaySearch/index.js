@@ -5,7 +5,6 @@ import { bool } from 'prop-types'
 import { getPoints } from '../../services/PointService'
 import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'
-import { usePointsContext } from '../../context/PointsContext'
 import Button from '../Button'
 import Overlay from '../Overlay'
 import './style.css'
@@ -15,7 +14,6 @@ function OverlaySearch({ showOverlay }) {
   const [selectedUf, setSelectedUf] = useState('')
   const [cities, setCities] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
-  const [, setPoints] = usePointsContext()
   const history = useHistory()
 
   const handleSelectedUf = ({ target }) => {
@@ -32,8 +30,7 @@ function OverlaySearch({ showOverlay }) {
     getPoints({
       uf: selectedUf,
       city: selectedCity
-    }).then(points => {
-      setPoints(points)
+    }).then(() => {
       history.push('/points')
     })
   }

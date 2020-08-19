@@ -1,15 +1,10 @@
 import React from 'react'
 
-import { PointsContextProvider } from './context/PointsContext'
 import Routes from './routes'
 import './App.css'
 
 function App() {
-  return (
-    <PointsContextProvider>
-      <Routes />
-    </PointsContextProvider>
-  )
+  return <Routes />
 }
 
 export default App
