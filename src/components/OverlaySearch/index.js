@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { bool } from 'prop-types'
 
-import { getPoints } from '../../services/PointService'
 import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'
 import Button from '../Button'
@@ -27,12 +26,7 @@ function OverlaySearch({ showOverlay }) {
   const handleSubmit = event => {
     event.preventDefault()
 
-    getPoints({
-      uf: selectedUf,
-      city: selectedCity
-    }).then(() => {
-      history.push('/points')
-    })
+    history.push(`/points?uf=${selectedUf}&city=${selectedCity}`)
   }
 
   useEffect(() => {

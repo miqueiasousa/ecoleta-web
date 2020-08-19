@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
+import { getPoints } from '../../services/PointService'
 import Container from '../../components/Container'
 import Header from '../../components/Header'
 import BottomNavigation from '../../components/BottomNavigation'
@@ -9,6 +10,14 @@ import './style.css'
 
 function ListPoints() {
   const [points, setPoints] = useState([])
+  const location = useLocation()
+
+  useEffect(() => {
+    getPoints({
+      uf: new URLSearchParams(location.search).get('uf'),
+      city: new URLSearchParams(location.search).get('city')
+    }).then(data => setPoints(data))
+  })
 
   return (
     <Container>
