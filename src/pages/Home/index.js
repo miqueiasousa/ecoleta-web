@@ -16,7 +16,7 @@ function Home() {
       <Container>
         <Header
           navigation={
-            <Link to="/create-point">
+            <Link to="/points/create">
               <BottomNavigation
                 icon={<FiLogIn />}
                 label="Cadastre um ponto de coleta"
