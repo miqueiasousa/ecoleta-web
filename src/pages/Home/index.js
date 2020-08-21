@@ -25,18 +25,18 @@ function Home() {
   }
 
   useEffect(() => {
-    getUfs().then(ufs => {
-      const serializedUfs = ufs.map(uf => uf.sigla)
+    getUfs().then(data => {
+      const serializedData = data.map(({ sigla }) => sigla)
 
-      setUfs(serializedUfs)
+      setUfs(serializedData)
     })
   }, [])
 
   useEffect(() => {
-    getCities(selectedUf).then(cities => {
-      const serializedCities = cities.map(city => city.nome)
+    getCities(selectedUf).then(data => {
+      const serializedData = data.map(({ nome }) => nome)
 
-      setCities(serializedCities)
+      setCities(serializedData)
     })
   }, [selectedUf])
 

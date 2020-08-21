@@ -1,22 +1,22 @@
-.counter {
+.points__counter {
   margin-bottom: 40px;
   display: block;
 }
 
-.container-points {
+.points__container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
 }
 
 @media screen and (min-width: 720px) {
-  .container-points {
+  .points__container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .container-points {
+  .points__container {
     grid-template-columns: repeat(3, 1fr);
   }
 }

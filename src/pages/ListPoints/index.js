@@ -28,11 +28,11 @@ function ListPoints() {
           label: 'Voltar para home'
         }}
       />
-      <div>
-        <span className="counter">
+      <div className="points">
+        <span className="points__counter">
           <b>{points.length} pontos</b> encontrados
         </span>
-        <div className="container-points">
+        <div className="points__container">
           {points.map(point => (
             <Point
               key={point.id}
