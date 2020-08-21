@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Dropzone from 'react-dropzone'
+import { FiUpload } from 'react-icons/fi'
 import { func } from 'prop-types'
 
 import { postPoint } from '../../services/PointService'
 import { getItems } from '../../services/ItemService'
 import { getCities } from '../../services/CityService'
 import { getUfs } from '../../services/UfService'
-import Dropzone from '../../components/Dropzone'
 import Button from '../../components/Button'
 import Item from '../../components/Item'
 import './style.css'
@@ -21,8 +22,17 @@ function Form({ showOverlay }) {
   const [selectedCity, setSelectedCity] = useState('')
   const [items, setItems] = useState([])
   const [selectedItems, setSelectedItems] = useState([])
-  const [image, setImage] = useState({})
+  const [file, setFile] = useState('')
+  const [selectedFile, setSelectedFile] = useState({})
   const history = useHistory()
+
+  function handleDrop(acceptedFiles) {
+    const [file] = acceptedFiles
+    const fileUrl = URL.createObjectURL(file)
+
+    setFile(fileUrl)
+    setSelectedFile(file)
+  }
 
   function handleSelectItem(event) {
     const selectItem = event.currentTarget.id
@@ -46,7 +56,7 @@ function Form({ showOverlay }) {
     data.append('uf', selectedUf)
     data.append('city', selectedCity)
     data.append('items', selectedItems.join(','))
-    data.append('image', image)
+    data.append('image', selectedFile)
 
     postPoint(data).then(() => {
       showOverlay(true)
@@ -78,7 +88,21 @@ function Form({ showOverlay }) {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <h1 className="form__head">Cadastro de ponto de coleta</h1>
-      <Dropzone onFileUploaded={setImage} />
+      <Dropzone onDrop={handleDrop} accept="image/*">
+        {({ getRootProps, getInputProps }) => (
+          <div className="dropzone" {...getRootProps()}>
+            <input {...getInputProps()} />
+            {file ? (
+              <img src={file} alt="Point thumbnail" />
+            ) : (
+              <p>
+                <FiUpload />
+                Imagem do estabelecimento
+              </p>
+            )}
+          </div>
+        )}
+      </Dropzone>
       <div className="fieldset">
         <div className="fieldset__header">
           <h2 className="fieldset__title">Dados da entidade</h2>
