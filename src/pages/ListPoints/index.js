@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 import { getPoints } from '../../services/PointService'
 import Container from '../../components/Container'
 import Header from '../../components/Header'
-import BottomNavigation from '../../components/BottomNavigation'
 import Point from '../../components/Point'
 import './style.css'
 
@@ -23,11 +22,11 @@ function ListPoints() {
   return (
     <Container>
       <Header
-        navigation={
-          <Link to="/">
-            <BottomNavigation icon={<FiArrowLeft />} label="Voltar para home" />
-          </Link>
-        }
+        navigation={{
+          to: '/',
+          icon: <FiArrowLeft />,
+          label: 'Voltar para home'
+        }}
       />
       <div>
         <span className="counter">
