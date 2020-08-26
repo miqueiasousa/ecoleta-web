@@ -17,7 +17,7 @@ function ListPoints() {
       uf: new URLSearchParams(location.search).get('uf'),
       city: new URLSearchParams(location.search).get('city')
     }).then(data => setPoints(data))
-  })
+  }, [])
 
   return (
     <Container>
