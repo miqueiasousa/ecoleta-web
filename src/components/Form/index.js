@@ -6,7 +6,7 @@ import { FiUpload, FiCheckCircle } from 'react-icons/fi'
 import { postPoint } from '../../services/PointService'
 import { getItems } from '../../services/ItemService'
 import { getCities } from '../../services/CityService'
-import { getUfs } from '../../services/UfService'
+import useUfFetching from '../../hooks/useUfFetching'
 import Button from '../Button'
 import Item from '../Item'
 import Overlay from '../Overlay'
@@ -16,7 +16,6 @@ function Form() {
   const [name, setName] = useState('')
   const [street, setStreet] = useState('')
   const [number, setNumber] = useState('')
-  const [ufs, setUfs] = useState([])
   const [selectedUf, setSelectedUf] = useState('')
   const [cities, setCities] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
@@ -25,6 +24,7 @@ function Form() {
   const [file, setFile] = useState('')
   const [selectedFile, setSelectedFile] = useState({})
   const [show, setShow] = useState(false)
+  const { ufs } = useUfFetching()
   const history = useHistory()
 
   function handleDrop(acceptedFiles) {
@@ -70,14 +70,6 @@ function Form() {
 
   useEffect(() => {
     getItems().then(data => setItems(data))
-  }, [])
-
-  useEffect(() => {
-    getUfs().then(data => {
-      const serializedData = data.map(({ sigla }) => sigla)
-
-      setUfs(serializedData)
-    })
   }, [])
 
   useEffect(() => {
