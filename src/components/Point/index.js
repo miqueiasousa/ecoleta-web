@@ -1,12 +1,14 @@
 import React from 'react'
-import { string, number, array } from 'prop-types'
+import { string, number, array, shape } from 'prop-types'
 
 import './style.css'
 
-function Point({ name, imageURL, uf, city, street, number, items }) {
+function Point({ point }) {
+  const { name, image_url, uf, city, street, number, items } = point
+
   return (
     <div className="point">
-      <img src={imageURL} alt={name} className="point__image" />
+      <img src={image_url} alt={name} className="point__image" />
       <h1 className="point__name">{name}</h1>
       <span className="point__items">
         {items.map(({ title }) => title).join(', ')}
@@ -21,13 +23,15 @@ function Point({ name, imageURL, uf, city, street, number, items }) {
 }
 
 Point.propTypes = {
-  name: string,
-  imageURL: string,
-  uf: string,
-  city: string,
-  street: string,
-  number: number,
-  items: array
+  point: shape({
+    name: string,
+    image_url: string,
+    uf: string,
+    city: string,
+    street: string,
+    number: number,
+    items: array
+  })
 }
 
 export default Point

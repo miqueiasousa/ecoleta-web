@@ -34,16 +34,7 @@ function ListPoints() {
         </span>
         <div className="points__container">
           {points.map(point => (
-            <Point
-              key={point.id}
-              name={point.name}
-              imageURL={point.image_url}
-              uf={point.uf}
-              city={point.city}
-              street={point.street}
-              number={point.number}
-              items={point.items}
-            />
+            <Point key={point.id} point={point} />
           ))}
         </div>
       </div>
