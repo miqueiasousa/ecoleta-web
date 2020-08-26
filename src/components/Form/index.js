@@ -205,13 +205,7 @@ function Form() {
           </div>
           <div className="container-items">
             {items.map(item => (
-              <Item
-                key={item.id}
-                id={item.id}
-                label={item.title}
-                imageSrc={item.image_url}
-                onClick={handleSelectItem}
-              />
+              <Item key={item.id} item={item} onClick={handleSelectItem} />
             ))}
           </div>
         </div>

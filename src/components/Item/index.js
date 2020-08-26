@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { string, func } from 'prop-types'
+import { string, number, func, shape } from 'prop-types'
 
 import './style.css'
 
-function Item({ id, label, imageSrc, onClick }) {
+function Item({ item, onClick }) {
   const [isSelected, setSelected] = useState(false)
+  const { id, title, image_url } = item
 
   return (
     <div
@@ -15,16 +16,18 @@ function Item({ id, label, imageSrc, onClick }) {
         onClick(e)
       }}
     >
-      <img src={imageSrc} alt={label} />
-      <span className="item__title">{label}</span>
+      <img src={image_url} alt={title} />
+      <span className="item__title">{title}</span>
     </div>
   )
 }
 
 Item.propTypes = {
-  id: string,
-  label: string,
-  imageSrc: string,
+  item: shape({
+    id: number,
+    image_url: string,
+    title: string
+  }),
   onClick: func
 }
 
