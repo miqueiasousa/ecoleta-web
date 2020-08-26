@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { FiLogIn, FiSearch } from 'react-icons/fi'
 
-import { getCities } from '../../services/CityService'
 import useUfFetching from '../../hooks/useUfFetching'
+import useCityFetching from '../../hooks/useCityFetching'
 import Container from '../../components/Container'
 import Header from '../../components/Header'
 import Button from '../../components/Button'
@@ -13,9 +13,9 @@ import './style.css'
 function Home() {
   const [show, setShow] = useState(false)
   const [selectedUf, setSelectedUf] = useState('')
-  const [cities, setCities] = useState([])
   const [selectedCity, setSelectedCity] = useState('')
   const { ufs } = useUfFetching()
+  const { cities } = useCityFetching(selectedUf)
   const history = useHistory()
 
   function handleSubmit(event) {
@@ -23,14 +23,6 @@ function Home() {
 
     history.push(`/points?uf=${selectedUf}&city=${selectedCity}`)
   }
-
-  useEffect(() => {
-    getCities(selectedUf).then(data => {
-      const serializedData = data.map(({ nome }) => nome)
-
-      setCities(serializedData)
-    })
-  }, [selectedUf])
 
   return (
     <div className="wrapper">
