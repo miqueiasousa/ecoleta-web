@@ -3,7 +3,7 @@ import { FiArrowLeft } from 'react-icons/fi'
 
 import Container from '../../components/Container'
 import Header from '../../components/Header'
-import Form from '../../components/Form'
+import RegisterForm from '../../components/RegisterForm'
 
 function CreatePoint() {
   return (
@@ -15,7 +15,7 @@ function CreatePoint() {
           label: 'Voltar para home'
         }}
       />
-      <Form />
+      <RegisterForm />
     </Container>
   )
 }

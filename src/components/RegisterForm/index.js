@@ -12,7 +12,7 @@ import Item from '../Item'
 import Overlay from '../Overlay'
 import './style.css'
 
-function Form() {
+function RegisterForm() {
   const [name, setName] = useState('')
   const [street, setStreet] = useState('')
   const [number, setNumber] = useState('')
@@ -207,4 +207,4 @@ function Form() {
   )
 }
 
-export default Form
+export default RegisterForm
