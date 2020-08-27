@@ -13,9 +13,11 @@ function ListPoints() {
   const location = useLocation()
 
   useEffect(() => {
+    const search = new URLSearchParams(location.search)
+
     getPoints({
-      uf: new URLSearchParams(location.search).get('uf'),
-      city: new URLSearchParams(location.search).get('city')
+      uf: search.get('uf'),
+      city: search.get('city')
     }).then(data => setPoints(data))
   }, [])
 
