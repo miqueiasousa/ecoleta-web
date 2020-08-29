@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FiLogIn, FiSearch } from 'react-icons/fi'
 
+import Wrapper from '../../components/Wrapper'
 import Container from '../../components/Container'
 import Header from '../../components/Header'
 import SearchForm from '../../components/SearchForm'
@@ -10,7 +11,7 @@ function Home() {
   const [show, setShow] = useState(false)
 
   return (
-    <div className="wrapper">
+    <Wrapper>
       <Container>
         <Header
           navigation={{
@@ -40,7 +41,7 @@ function Home() {
         </main>
       </Container>
       <SearchForm show={show} />
-    </div>
+    </Wrapper>
   )
 }
 

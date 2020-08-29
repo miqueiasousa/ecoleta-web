@@ -1,0 +1,10 @@
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+    background: 
+      url('../../assets/home-background.svg') 
+      bottom right / 750px
+      no-repeat;
+  }
+}
