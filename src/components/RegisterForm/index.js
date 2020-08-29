@@ -106,7 +106,8 @@ function RegisterForm() {
                   className="field__input"
                   type="text"
                   name="name"
-                  onChange={({ target }) => setName(target.value)}
+                  value={name}
+                  onChange={e => setName(e.target.value)}
                 />
               </div>
             </div>
@@ -120,7 +121,8 @@ function RegisterForm() {
                   className="field__input"
                   type="text"
                   name="street"
-                  onChange={({ target }) => setStreet(target.value)}
+                  value={street}
+                  onChange={e => setStreet(e.target.value)}
                 />
               </div>
             </div>
@@ -134,7 +136,8 @@ function RegisterForm() {
                   className="field__input"
                   type="number"
                   name="number"
-                  onChange={({ target }) => setNumber(target.value)}
+                  value={number}
+                  onChange={e => setNumber(e.target.value)}
                 />
               </div>
             </div>
@@ -147,7 +150,8 @@ function RegisterForm() {
                   id="uf"
                   className="field__input"
                   name="uf"
-                  onChange={({ target }) => setSelectedUf(target.value)}
+                  value={selectedUf}
+                  onChange={e => setSelectedUf(e.target.value)}
                 >
                   <option value="0">Selecione uma UF</option>
                   {ufs.map(uf => (
@@ -167,7 +171,8 @@ function RegisterForm() {
                   id="city"
                   className="field__input"
                   name="city"
-                  onChange={({ target }) => setSelectedCity(target.value)}
+                  value={selectedCity}
+                  onChange={e => setSelectedCity(e.target.value)}
                 >
                   <option value="0">Selecione uma cidade</option>
                   {cities.map(city => (
