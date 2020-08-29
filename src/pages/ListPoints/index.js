@@ -5,8 +5,7 @@ import { useLocation } from 'react-router-dom'
 import { getPoints } from '../../services/PointService'
 import Container from '../../components/Container'
 import Header from '../../components/Header'
-import Point from '../../components/Point'
-import './style.css'
+import SectionPoints from '../../components/SectionPoints'
 
 function ListPoints() {
   const [points, setPoints] = useState([])
@@ -30,16 +29,7 @@ function ListPoints() {
           label: 'Voltar para home'
         }}
       />
-      <div className="points">
-        <span className="points__counter">
-          <b>{points.length} pontos</b> encontrados
-        </span>
-        <div className="points__container">
-          {points.map(point => (
-            <Point key={point.id} point={point} />
-          ))}
-        </div>
-      </div>
+      <SectionPoints points={points} />
     </Container>
   )
 }
